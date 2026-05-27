@@ -1,14 +1,8 @@
 'use strict';
-
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
       // definir relaciones cuando existan más entidades
     }
@@ -16,13 +10,13 @@ module.exports = (sequelize, DataTypes) => {
 
   User.init(
     {
-      user_id: {
+      userId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
       },
-      nick_Name: {
+      nickName: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true
@@ -31,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'User',
-      tableName: 'User',
+      tableName: 'user',
       timestamps: false
     }
   );

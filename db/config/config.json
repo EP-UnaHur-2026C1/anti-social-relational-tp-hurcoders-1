@@ -1,5 +1,7 @@
 {
   "development": {
+    "username": "root",
+    "password": null,
     "dialect": "sqlite",
     "storage": "db/data/db.sqlite"
   },
