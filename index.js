@@ -12,7 +12,7 @@ app.use(express.json());
 async function responderErrorSequelize(res, error) {
   if (error.name === 'SequelizeUniqueConstraintError') {
     return res.status(409).json({
-      message: 'nick_Name duplicado o conflicto de unicidad.',
+      message: 'nickName duplicado o conflicto de unicidad.',
       errores:
         error.errors?.map((e) => ({
           atributo: e.path || e.validatorKey,
@@ -89,14 +89,13 @@ app.listen(PORT, async (err) => {
     process.exit(1);
   }
   try {
-    // force: true ELIMINA la tabla si ya existe y la CREA de nuevo vacía (útil durante depuración)
     await sequelize.sync({ force: true });
     console.log('OK tablas User recreadas desde cero.');
 
     await User.bulkCreate([
-      { nick_Name: 'usr001' },
-      { nick_Name: 'usr002' },
-      { nick_Name: 'usr003' }
+      { nickName: 'usr001' },
+      { nickName: 'usr002' },
+      { nickName: 'usr003' }
     ]);
     console.log('OK datos iniciales de usuarios cargados.');
   } catch (dbError) {
